@@ -1,0 +1,52 @@
+[System]
+Name='FNN'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='PCA-1'
+Range=[0 1]
+NumMFs=4
+MF1='Less':'trapmf',[0 0 0.15 0.25]
+MF2='Little':'trapmf',[0.2 0.3 0.4 0.5]
+MF3='Much':'trapmf',[0.45 0.55 0.65 0.75]
+MF4='More':'trapmf',[0.7 0.8 1 1]
+
+[Input2]
+Name='PCA-2'
+Range=[0 1]
+NumMFs=3
+MF1='Less':'trapmf',[0 0 0.2 0.4]
+MF2='Moderate':'trapmf',[0.3 0.4 0.6 0.7]
+MF3='More':'trapmf',[0.6 0.8 1 1]
+
+[Output1]
+Name='Cp'
+Range=[0 1]
+NumMFs=4
+MF1='Eff-Low':'trapmf',[0 0 0.1 0.2]
+MF2='Low-Middle':'trapmf',[0.15 0.3 0.4 0.55]
+MF3='Eff-High':'trapmf',[0.8 0.9 1 1]
+MF4='Hi-Middle':'trapmf',[0.45 0.6 0.7 0.85]
+
+[Rules]
+1 1, 2 (1) : 1
+1 2, 2 (1) : 1
+1 3, 1 (1) : 1
+2 1, 2 (1) : 1
+2 2, 4 (1) : 1
+2 3, 2 (1) : 1
+3 1, 2 (1) : 1
+3 2, 2 (1) : 1
+3 3, 2 (1) : 1
+4 1, 2 (1) : 1
+4 2, 3 (1) : 1
+4 3, 4 (1) : 1
